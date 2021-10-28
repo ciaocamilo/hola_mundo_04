@@ -1,0 +1,90 @@
+CREACIÓN DEL repositorio
+
+git init
+git add README.md
+git commit -m "Primer commit"
+git branch -M master
+git remote add origin https://github.com/ciaocamilo/prueba56.git
+git status
+git push -u origin master
+git add .
+git commit -m "Se agrega clase principal"
+git push
+
+AGREGAR Y SUBIR CAMBIOS
+
+git add .
+git commit -m "Mensaje"
+git push
+
+CONFIGURACIÓN DE CUENTA
+
+git config --global user.email "nombre@micorreo.com"
+git config --global user.name "Mi nombre"
+
+git config user.name
+git config user.email
+
+CLONAR repositorio
+
+git clone https://github.com/ciaocamilo/hola_mundo_04
+git pull
+
+VERIFICAR REPOSITORIO REMOTO
+git remote -v
+
+CREAR RAMA
+
+git branch desarrollo
+git status
+git branch
+git checkout desarrollo
+git add hola.txt
+
+git commit -m "Se agrega archivo hola.txt"
+git push origin desarrollo
+
+git fetch
+git pull
+git log
+git superlog
+
+MANEJO DE STASH
+-----------------
+git stash
+(git pull)
+git stash list
+git stash apply stash@{0}
+git stash drop stash@{0}
+
+git reset
+
+-- Para merge --
+
+git status
+git fetch
+git pull
+
+git checkout Nata_R
+git checkout desarrollo
+
+git merge Nata_R --> Actualizar rama desarrollo
+git push origin desarrollo
+
+git merge desarrollo --> Actualizar rama Nata_R
+git push origin Nata_R
+
+----------------Para SuperLog------------------------------------------------------------------------------------------------------------------
+git config --global alias.superlog "log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all"
+-----------------------------------------------------------------------------------------------------------------------------------------------
+
+
+ELIMINAR COMMIT
+----------------------------------------------------------------------
+git reset --hard HEAD~1
+git push origin -f
+
+git log
+git reset --hard CODIGO
+
+git reset --hard 187f84cdb2b975a8a619fe45f6d77a5db4a05828
