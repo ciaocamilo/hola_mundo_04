@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Hola Mundo 04</string>
+    <string name="login_title">Mi App Android</string>
+    <string name="name_login">Escriba su nombre</string>
+    <string name="login_password">Escriba la contraseña</string>
+    <string name="enter">Ingresar</string>
 </resources>
