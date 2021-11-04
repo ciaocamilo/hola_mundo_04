@@ -3,7 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/AndroidStudioProjects/MisionTic/HolaMundo04/app/src/main/res/layout/activity_login.xml" value="0.18" />
+        <entry key="..\:/AndroidStudioProjects/MisionTic/HolaMundo04/app/src/main/res/layout-land/activity_login.xml" value="0.25" />
+        <entry key="..\:/AndroidStudioProjects/MisionTic/HolaMundo04/app/src/main/res/layout/activity_login.xml" value="0.20416666666666666" />
         <entry key="..\:/AndroidStudioProjects/MisionTic/HolaMundo04/app/src/main/res/layout/activity_main.xml" value="0.20199275362318841" />
       </map>
     </option>
