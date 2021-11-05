@@ -4,4 +4,5 @@
     <string name="name_login">Escriba su nombre</string>
     <string name="login_password">Escriba la contraseña</string>
     <string name="enter">Ingresar</string>
+    <string name="exit">Salir</string>
 </resources>
