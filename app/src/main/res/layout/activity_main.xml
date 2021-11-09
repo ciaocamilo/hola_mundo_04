@@ -13,6 +13,8 @@
         android:rotationX="32"
         android:rotationY="14"
         android:text="Hola al Mundo!!!"
+        android:layout_marginStart="10dp"
+        android:paddingStart="10dp"
         android:textColor="#B50909"
         android:textSize="48sp"
         android:textStyle="bold"
@@ -76,5 +78,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2"
         app:layout_constraintVertical_bias="0.576" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabCalculator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:onClick="goToCalculator"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.902"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.939"
+        android:src="@android:drawable/ic_menu_add"
+        android:focusable="true" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
