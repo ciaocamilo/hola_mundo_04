@@ -7,14 +7,14 @@
     tools:context=".MainActivity">
 
     <TextView
+        android:id="@+id/textView10"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:paddingStart="10dp"
         android:rotation="-12"
         android:rotationX="32"
         android:rotationY="14"
         android:text="Hola al Mundo!!!"
-        android:layout_marginStart="10dp"
-        android:paddingStart="10dp"
         android:textColor="#B50909"
         android:textSize="48sp"
         android:textStyle="bold"
@@ -93,5 +93,18 @@
         app:layout_constraintVertical_bias="0.939"
         android:src="@android:drawable/ic_menu_add"
         android:focusable="true" />
+
+    <Button
+        android:id="@+id/btnPersonForm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/form"
+        android:onClick="goToPersonForm"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.175"
+        app:layout_constraintStart_toEndOf="@+id/btnExit"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.958" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
