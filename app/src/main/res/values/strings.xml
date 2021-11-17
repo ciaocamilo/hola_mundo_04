@@ -32,4 +32,10 @@
     <string name="contacts">Contactos</string>
     <string name="contact_example">Pepito Perez</string>
     <string name="phone_example">325114587</string>
+    <string name="do_order">Realizar Pedido</string>
+    <string name="orders">Pedidos</string>
+    <string name="chicken">Pollo</string>
+    <string name="salami">Salami</string>
+    <string name="ham">Jamón</string>
+    <string name="strOrderBase">Pedido realizado con los siguientes ingredientes: </string>
 </resources>
