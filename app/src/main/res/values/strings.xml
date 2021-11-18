@@ -38,4 +38,7 @@
     <string name="salami">Salami</string>
     <string name="ham">Jamón</string>
     <string name="strOrderBase">Pedido realizado con los siguientes ingredientes: </string>
+    <string name="special_pizza">Pizza especial</string>
+    <string name="home_pizza">Deliciosa pizza de la casa</string>
+    <string name="pizza_description">Pizza de carnes especialmente preparada por el restaurante a partir de los ingredientes seleccionados.</string>
 </resources>
