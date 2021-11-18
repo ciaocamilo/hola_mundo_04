@@ -66,19 +66,6 @@
         app:layout_constraintVertical_bias="0.345"
         android:src="@drawable/garza" />
 
-    <Button
-        android:id="@+id/btnExit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="goToLogin"
-        android:text="@string/exit"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.052"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2"
-        app:layout_constraintVertical_bias="0.282" />
-
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fabCalculator"
         android:layout_width="wrap_content"
@@ -93,40 +80,5 @@
         app:layout_constraintVertical_bias="0.939"
         android:src="@android:drawable/ic_menu_add"
         android:focusable="true" />
-
-    <Button
-        android:id="@+id/btnPersonForm"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="goToPersonForm"
-        android:text="@string/form"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.165"
-        app:layout_constraintStart_toEndOf="@+id/btnExit"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.89" />
-
-    <Button
-        android:id="@+id/button8"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/contacts"
-        android:onClick="goToContact"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnPersonForm" />
-
-    <Button
-        android:id="@+id/button9"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/orders"
-        android:onClick="goToOrders"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/button8"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnExit" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

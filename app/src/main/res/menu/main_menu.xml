@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/item_calculadora"
+        android:title="@string/calculate_avg" />
+    <item
+        android:id="@+id/item_contacto"
+        android:title="@string/contacts" />
+    <item
+        android:id="@+id/item_formulario"
+        android:title="@string/form" />
+    <item
+        android:id="@+id/item_pedidio"
+        android:title="@string/orders" />
+    <item
+        android:id="@+id/item_salir"
+        android:title="@string/exit" />
+</menu>
