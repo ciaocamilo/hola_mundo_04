@@ -2,6 +2,8 @@ package com.misiontic.holamundo04;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -10,8 +12,12 @@ import android.widget.Toast;
 
 public class OrderActivity extends AppCompatActivity {
 
+    private SharedPreferences settings; // SP
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        settings = getSharedPreferences("id", Context.MODE_PRIVATE); // SP
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order);
 
@@ -41,6 +47,12 @@ public class OrderActivity extends AppCompatActivity {
         if (cbJamon.isChecked()) {
             strPedido = strPedido.concat("jamón ");
         }
+
+        //SP
+            String usuario = settings.getString("usuario", "error");
+        //
+
+        strPedido = strPedido.concat(" para el señor(a) " + usuario);
 
         Toast.makeText(this, strPedido, Toast.LENGTH_LONG).show();
     }
