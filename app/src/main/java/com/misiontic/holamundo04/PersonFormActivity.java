@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.misiontic.holamundo04.db.MySQLiteHelper;
 
@@ -40,8 +41,31 @@ public class PersonFormActivity extends AppCompatActivity {
         MySQLiteHelper conexion_bd = new MySQLiteHelper(this);
         String insert_query = "INSERT INTO personas (nombres, apellidos, direccion, telefono, fecha_nacimiento) " +
                 "VALUES ('"+name+"', '"+lastname+"', '"+address+"', '"+phone+"', '"+birthday+"')";
-        conexion_bd.insertData(insert_query);
+
+        boolean success = conexion_bd.insertData(insert_query);
+        if (success) {
+            Toast.makeText(this, "Persona guardada con éxito", Toast.LENGTH_LONG).show();
+            limpiarFormulario();
+        } else {
+            Toast.makeText(this, "Error al guardar la persona", Toast.LENGTH_LONG).show();
+        }
         //
+    }
+
+    public void limpiarFormulario(View view) {
+        etName.setText("");
+        etLastname.setText("");
+        etAddress.setText("");
+        etPhone.setText("");
+        etBirthday.setText("");
+    }
+
+    public void limpiarFormulario() {
+        etName.setText("");
+        etLastname.setText("");
+        etAddress.setText("");
+        etPhone.setText("");
+        etBirthday.setText("");
     }
 
 
