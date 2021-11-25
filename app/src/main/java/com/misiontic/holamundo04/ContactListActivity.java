@@ -10,12 +10,13 @@ import android.widget.Toast;
 
 import com.misiontic.holamundo04.db.MySQLiteHelper;
 import com.misiontic.holamundo04.listviews.ContactListViewAdapter;
+import com.misiontic.holamundo04.model.Persona;
 
 import java.util.ArrayList;
 
 public class ContactListActivity extends AppCompatActivity {
 
-    private ArrayList<String> contactList;
+    private ArrayList<Persona> contactList;
     private static ListView listView;
     private static ContactListViewAdapter adapter;
 
@@ -32,6 +33,10 @@ public class ContactListActivity extends AppCompatActivity {
     public void showContacts() {
         String nombre;
         String apellidos;
+        int id;
+        String direccion;
+        String telefono;
+        String fecha_nacimiento;
 
         MySQLiteHelper conexion_bd = new MySQLiteHelper(this);
         String sentence = "SELECT * FROM personas";
@@ -44,9 +49,16 @@ public class ContactListActivity extends AppCompatActivity {
                 int indice = resultados.getColumnIndex("nombres");
                 nombre = resultados.getString(indice);
                 apellidos = resultados.getString(2);
+                id = resultados.getInt(0);
+                direccion = resultados.getString(3);
+                telefono = resultados.getString(4);
+                fecha_nacimiento = resultados.getString(5);
+
+                Persona nuevoContacto = new Persona(nombre, apellidos, direccion, telefono, fecha_nacimiento, null);
+                nuevoContacto.setId(id);
 
                 //lista
-                contactList.add(nombre + " " + apellidos);
+                contactList.add(nuevoContacto);
                 //
 
             } while (resultados.moveToNext());

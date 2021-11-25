@@ -9,18 +9,19 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.misiontic.holamundo04.R;
+import com.misiontic.holamundo04.model.Persona;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
 
-public class ContactListViewAdapter extends ArrayAdapter<String> {
+public class ContactListViewAdapter extends ArrayAdapter<Persona> {
 
-    ArrayList<String> list;
+    ArrayList<Persona> list;
     Context context;
 
-    public ContactListViewAdapter(Context context, ArrayList<String> items) {
+    public ContactListViewAdapter(Context context, ArrayList<Persona> items) {
         super(context, R.layout.contact_list_row, items);
         this.context = context;
         list = items;
@@ -34,7 +35,12 @@ public class ContactListViewAdapter extends ArrayAdapter<String> {
         }
 
         TextView tvContactName = convertView.findViewById(R.id.tvContactName);
-        tvContactName.setText(list.get(position));
+        TextView tvPhone = convertView.findViewById(R.id.tvContactPhone);
+
+        String fullName = list.get(position).getNombres() + " " + list.get(position).getApellidos();
+        tvContactName.setText(fullName);
+
+        tvPhone.setText(list.get(position).getTelefono());
 
         return  convertView;
     }
