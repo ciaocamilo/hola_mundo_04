@@ -47,11 +47,13 @@ public class ContactListActivity extends AppCompatActivity {
 
                 //lista
                 contactList.add(nombre + " " + apellidos);
-                adapter = new ContactListViewAdapter(this, contactList);
-                listView.setAdapter(adapter);
                 //
 
             } while (resultados.moveToNext());
+
+            adapter = new ContactListViewAdapter(this, contactList);
+            listView.setAdapter(adapter);
+
         } catch (Exception e) {
             Toast.makeText(this, "Error al realizar la consulta " + e, Toast.LENGTH_LONG).show();
         } finally {

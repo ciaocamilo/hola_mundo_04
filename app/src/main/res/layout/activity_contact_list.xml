@@ -36,7 +36,8 @@
             android:id="@+id/contactList"
             android:layout_marginTop="3dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            tools:listitem="@layout/contact_list_row"/>
 
     </LinearLayout>
 
