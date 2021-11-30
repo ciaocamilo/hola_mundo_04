@@ -1,5 +1,6 @@
 package com.misiontic.holamundo04;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
@@ -20,7 +21,9 @@ import com.misiontic.holamundo04.model.Usuario;
 public class LoginActivity extends AppCompatActivity {
 
     private EditText etName;
+    private EditText etPassword;
     private SharedPreferences settings; // SP
+    private boolean success = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,27 +35,64 @@ public class LoginActivity extends AppCompatActivity {
 
     public void goToMain(View view) {
         etName = findViewById(R.id.etPersonName);
+        etPassword = findViewById(R.id.etPassword);
         String name = etName.getText().toString();
+        String password = etPassword.getText().toString();
+
+        // pruebaLectura(name);
 
         Intent intentMain = new Intent(this, MainActivity.class);
 
         intentMain.putExtra("user", name);
 
-        // SP
-        SharedPreferences.Editor editor = settings.edit();
-        editor.putInt("id", 1);
-        editor.putString("usuario", name);
-        editor.commit();
-        //
+        checkUser(name, password);
+        if (success) {
+            // SP
+            SharedPreferences.Editor editor = settings.edit();
+            editor.putInt("id", 1);
+            editor.putString("usuario", name);
+            editor.commit();
+            //
+            startActivity(intentMain);
+        } else {
+            Toast.makeText(this, "Usuario y/o contraseña no válidos", Toast.LENGTH_SHORT).show();
+        }
 
-        pruebaLectura(name);
-        startActivity(intentMain);
     }
 
     public void goToNewUser(View view) {
         Intent newUserIntent = new Intent(this, NewUserActivity.class);
         startActivity(newUserIntent);
     }
+
+
+    public void checkUser(String nombre, String contrasena) {
+
+        // Read from the database
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference("usuarios");
+        myRef.child("u_" + nombre).addValueEventListener(new ValueEventListener(){
+
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                Usuario value = snapshot.getValue(Usuario.class);
+                if(value != null) {
+                    String saved_password = value.getContrasena();
+                    if (saved_password.equals(contrasena)) {
+                        success = true;
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                Toast.makeText(LoginActivity.this, "Failed to read value." + error.toException(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+
+
 
     public void pruebaLectura(String nombre) { //FB
         // Read from the database
