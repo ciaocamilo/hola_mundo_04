@@ -23,7 +23,7 @@ public class LoginActivity extends AppCompatActivity {
     private EditText etName;
     private EditText etPassword;
     private SharedPreferences settings; // SP
-    private boolean success = false;
+    // private boolean success = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,22 +42,16 @@ public class LoginActivity extends AppCompatActivity {
         // pruebaLectura(name);
 
         Intent intentMain = new Intent(this, MainActivity.class);
-
         intentMain.putExtra("user", name);
 
-        checkUser(name, password);
-        if (success) {
-            // SP
-            SharedPreferences.Editor editor = settings.edit();
-            editor.putInt("id", 1);
-            editor.putString("usuario", name);
-            editor.commit();
-            //
-            startActivity(intentMain);
-        } else {
-            Toast.makeText(this, "Usuario y/o contraseña no válidos", Toast.LENGTH_SHORT).show();
-        }
+        // SP
+        SharedPreferences.Editor editor = settings.edit();
+        editor.putInt("id", 1);
+        editor.putString("usuario", name);
+        editor.commit();
+        //
 
+        checkUser(name, password, intentMain);
     }
 
     public void goToNewUser(View view) {
@@ -66,7 +60,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
 
-    public void checkUser(String nombre, String contrasena) {
+    public void checkUser(String nombre, String contrasena, Intent intentMain) {
 
         // Read from the database
         FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -79,7 +73,9 @@ public class LoginActivity extends AppCompatActivity {
                 if(value != null) {
                     String saved_password = value.getContrasena();
                     if (saved_password.equals(contrasena)) {
-                        success = true;
+                        startActivity(intentMain);
+                    } else {
+                        Toast.makeText(LoginActivity.this, "Usuario y/o contraseña no válidos", Toast.LENGTH_SHORT).show();
                     }
                 }
             }

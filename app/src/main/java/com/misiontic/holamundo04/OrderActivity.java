@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.Toast;
 
+import com.misiontic.holamundo04.model.Pedido;
 import com.misiontic.holamundo04.model.Producto;
 
 import java.util.ArrayList;
@@ -36,7 +37,7 @@ public class OrderActivity extends AppCompatActivity {
         // Test API
         ApiRequest api = new ApiRequest();
         ArrayList<Producto> listadoProductos = api.consultarProdctos(this);
-        Toast.makeText(this, "hola", Toast.LENGTH_SHORT).show();
+        // Toast.makeText(this, "hola", Toast.LENGTH_SHORT).show();
 
     }
 
@@ -62,9 +63,16 @@ public class OrderActivity extends AppCompatActivity {
             String usuario = settings.getString("usuario", "error");
         //
 
+        // API
+        Pedido nuevoPedido = new Pedido(usuario, strPedido, 1200.0, "0.0");
+        ApiRequest api = new ApiRequest();
+        api.guardarPedido(nuevoPedido, this);
+        //
+
         strPedido = strPedido.concat(" para el señor(a) " + usuario);
 
         Toast.makeText(this, strPedido, Toast.LENGTH_LONG).show();
+
     }
 
 }
