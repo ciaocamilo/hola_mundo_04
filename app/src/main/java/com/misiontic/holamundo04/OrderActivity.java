@@ -10,6 +10,10 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.Toast;
 
+import com.misiontic.holamundo04.model.Producto;
+
+import java.util.ArrayList;
+
 public class OrderActivity extends AppCompatActivity {
 
     private SharedPreferences settings; // SP
@@ -28,6 +32,12 @@ public class OrderActivity extends AppCompatActivity {
                 realizarPedido();
             }
         });
+
+        // Test API
+        ApiRequest api = new ApiRequest();
+        ArrayList<Producto> listadoProductos = api.consultarProdctos(this);
+        Toast.makeText(this, "hola", Toast.LENGTH_SHORT).show();
+
     }
 
     public void realizarPedido() {
