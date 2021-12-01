@@ -77,6 +77,8 @@ public class LoginActivity extends AppCompatActivity {
                     } else {
                         Toast.makeText(LoginActivity.this, "Usuario y/o contraseña no válidos", Toast.LENGTH_SHORT).show();
                     }
+                } else {
+                    Toast.makeText(LoginActivity.this, "Usuario y/o contraseña no válido", Toast.LENGTH_SHORT).show();
                 }
             }
 
