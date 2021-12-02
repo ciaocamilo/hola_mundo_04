@@ -5,12 +5,17 @@ import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapShader;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
+import android.os.Environment;
 import android.provider.MediaStore;
 import android.view.View;
 import android.widget.EditText;
@@ -18,6 +23,9 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.misiontic.holamundo04.db.MySQLiteHelper;
+
+import java.io.File;
+import java.io.FileOutputStream;
 
 public class PersonFormActivity extends AppCompatActivity {
 
@@ -70,6 +78,7 @@ public class PersonFormActivity extends AppCompatActivity {
             Toast.makeText(this, "Error al guardar la persona", Toast.LENGTH_LONG).show();
         }
         //
+        saveToGallery();
     }
 
     public void limpiarFormulario(View view) {
@@ -114,5 +123,40 @@ public class PersonFormActivity extends AppCompatActivity {
     );
 
 
+    private void saveToGallery() {
+
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
+            Bitmap bitmap = ((BitmapDrawable) ivPictureForm.getDrawable()).getBitmap();
+
+            FileOutputStream outputStream = null;
+            File file = Environment.getExternalStorageDirectory();
+            File dir = new File(file.getAbsolutePath() + "/Fotos_04");
+            dir.mkdirs();
+
+            String filename = String.format("%d.png", System.currentTimeMillis());
+            File outfile = new File (dir, filename);
+
+            try {
+                outputStream = new FileOutputStream(outfile);
+                bitmap.compress(Bitmap.CompressFormat.PNG, 100, outputStream);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            try {
+                outputStream.flush();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            try {
+                outputStream.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+        } else {
+            ActivityCompat.requestPermissions(PersonFormActivity.this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 44);
+        }
+
+    }
 
 }
