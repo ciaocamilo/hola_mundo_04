@@ -10,14 +10,18 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.Toast;
 
+import com.misiontic.holamundo04.location.MyLocation;
 import com.misiontic.holamundo04.model.Pedido;
 import com.misiontic.holamundo04.model.Producto;
 
 import java.util.ArrayList;
 
+
 public class OrderActivity extends AppCompatActivity {
 
     private SharedPreferences settings; // SP
+
+    MyLocation coordenadas;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +42,9 @@ public class OrderActivity extends AppCompatActivity {
         ApiRequest api = new ApiRequest();
         ArrayList<Producto> listadoProductos = api.consultarProdctos(this);
         // Toast.makeText(this, "hola", Toast.LENGTH_SHORT).show();
+
+        // Test location
+        coordenadas = new MyLocation(this, OrderActivity.this);
 
     }
 
@@ -63,8 +70,11 @@ public class OrderActivity extends AppCompatActivity {
             String usuario = settings.getString("usuario", "error");
         //
 
+
+        String ubicacion = coordenadas.getLatitud() +"," + coordenadas.getLongitud();
+
         // API
-        Pedido nuevoPedido = new Pedido(usuario, strPedido, 1200.0, "0.0");
+        Pedido nuevoPedido = new Pedido(usuario, strPedido, 1200.0, ubicacion);
         ApiRequest api = new ApiRequest();
         api.guardarPedido(nuevoPedido, this);
         //
