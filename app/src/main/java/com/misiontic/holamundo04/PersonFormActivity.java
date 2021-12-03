@@ -129,14 +129,18 @@ public class PersonFormActivity extends AppCompatActivity {
             Bitmap bitmap = ((BitmapDrawable) ivPictureForm.getDrawable()).getBitmap();
 
             FileOutputStream outputStream = null;
-            File file = Environment.getExternalStorageDirectory();
-            File dir = new File(file.getAbsolutePath() + "/Fotos_04");
+            /* File file = Environment.getExternalStorageDirectory();
+            File dir = new File(file.getAbsolutePath() + "/Fotos_04"); */
+            // Cambiar ´por
+            File dir = new File(this.getExternalFilesDir(Environment.DIRECTORY_PICTURES), "Fotos_04");
             dir.mkdirs();
 
             String filename = String.format("%d.png", System.currentTimeMillis());
             File outfile = new File (dir, filename);
 
             try {
+                // Archivo guardado en
+                // \Android\data\com.misiontic.holamundo04\files\Pictures\Fotos_05
                 outputStream = new FileOutputStream(outfile);
                 bitmap.compress(Bitmap.CompressFormat.PNG, 100, outputStream);
             } catch (Exception e) {
